@@ -51,6 +51,8 @@ io.on('connection', function(socket) {
 				socket.emit('chat message', '[whisper] to ' + msgsplit[1] + ': ' + msgsplit.slice(2).join(' '));
 				console.log('Whisper from:', socket.username,'to',msgsplit[1],msgsplit.slice(2).join(' '));
 			}
+			// TODO:  Add more chat commands, bring this out into its own handler for more complex 
+			//        functions and implementations
 		} else { // Emit to everyone the message
 			io.emit('chat message', message);
 			console.log('Message',message);

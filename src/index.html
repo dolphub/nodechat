@@ -37,15 +37,22 @@
       postmsg(msg);
     });
 
-    // Users
+    // Private message
+    socket.on('whisper message', function(msg, usr) {
+      postmsg('[' + usr + '] whispers: ' + msg);
+    });
+
+    // New user connecting
     socket.on('new user', function() {
       postmsg('New user logging in...');
     });
 
+    // New user has logged in
     socket.on('user login', function(usr) {
       postmsg(usr + ' has joined the channel.');
     });
 
+    // User has left the channel
     socket.on('user disconnected', function(usr) {
       postmsg(usr + ' has disconnected.');
     });

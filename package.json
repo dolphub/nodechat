@@ -1,0 +1,11 @@
+{
+  "name": "nodechat-simple",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Simple websocket chat program",
+  "author": "Randy Mikkelsaar <randy.mikkelsaar@gmail.com>",
+  "dependencies": {
+    "socket.io": "*",
+    "express": "*"
+  }
+}

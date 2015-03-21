@@ -1,4 +1,4 @@
-# nodechat
+# NodeChat
 This is a testing application to play with message passing and functionality of socket.io and node.js
 
 To install the application:

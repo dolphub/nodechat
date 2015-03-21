@@ -13,14 +13,16 @@ app.controller('chatCtrl', ['$scope', 'socket', 'prompt', function($scope, socke
 	$scope.username = "";
 
 
+	/**
+	 * @param {object} Keypress Event
+	 * On Enter key it will send the message to the server
+	 */
 	$scope.sendMessage = function(e) {
 	  if( e.which === 13 && $scope.msg !== "" ) {
 	  	socket.emit('chat message', $scope.msg);
 	  	$scope.msg = "";
 	  }	    
 	}
-
-	// socket.emit('user login', username);
 
 	// Message event
 	socket.on('chat message', function(msg) {
@@ -31,7 +33,6 @@ app.controller('chatCtrl', ['$scope', 'socket', 'prompt', function($scope, socke
     socket.on('user login', function(usr) {
       $scope.addMsg(usr + ' has joined the channel.');
     });
-
     
     // Private message
     socket.on('whisper message', function(msg, usr) {
@@ -43,12 +44,20 @@ app.controller('chatCtrl', ['$scope', 'socket', 'prompt', function($scope, socke
       $scope.addMsg(usr + ' has disconnected.');
     });
 
+    /**
+     * @param {string} Message to put into the messageQueue
+     * Adds a message to the message model
+     */
     $scope.addMsg = function(msg)
     {
     	$scope.msgQueue.push({'text': msg});
-    	$scope.$digest();
+    	$scope.$digest(); // This function is called by an event, must digest
     }
 
+    /**
+     * Prompts the user for their username, and ensures 
+     * they have a username before allowing to participate
+     */
     $scope.promptUsername = function() {
     	prompt({
 			"title": "Login",
@@ -60,7 +69,7 @@ app.controller('chatCtrl', ['$scope', 'socket', 'prompt', function($scope, socke
 			$scope.username = result;
 			socket.emit('user login', result);
 			$scope.addMsg('Welcome to NodeChat v1.0.0 ' + result + '!');			
-		}).finally(function() {
+		}).finally(function() {  // Checks to see if they have entered a username or not
 			if( $scope.username === "" )
 				$scope.promptUsername();
 		});

@@ -1,0 +1,68 @@
+<!doctype html>
+<html ng-app='nodeChat'>
+  <head>
+    <title>Socket.IO chat</title>
+    <script src="jquery/dist/jquery.min.js"></script>    
+    <script src="angular/angular.min.js"></script>
+    <script src="angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="angular-prompt/dist/angular-prompt.min.js"></script>
+    <script src="angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
+  </head>
+  
+
+  <script>
+    // Connection location not required, default tries to connect to ip hosting the page
+    // var socket = io();
+    // var username = '';
+
+    // window.onload = function() {
+    //   username = prompt("Enter a username");
+
+
+    //   $('#m').on('keypress', function(e) { 
+    //     if( e.keyCode !== 13 )
+    //       return;
+    //     socket.emit('chat message', $('#m').val());
+    //     $('#m').val('');
+    //   });
+    // };
+    
+
+    // // User has left the channel
+    // socket.on('user disconnected', function(usr) {
+    //   postmsg(usr + ' has disconnected.');
+    // });
+
+    // function postmsg(m)
+    // {
+    //   $('#messages').append($('<li>').text(m));
+    // }
+
+     
+  </script>
+
+  <body ng-controller='chatCtrl' data-ng-init='promptUsername()'>
+    <ul id="messages"></ul>
+    <h1>{{ headerMessage }}</h1>
+    <h4>{{ subMessage }}</h4>
+
+    <div class='container'>
+      <ul class='list-group'>
+        <li ng-repeat='msg in msgQueue' class='list-group-item'>{{ msg.text }}</li>
+      </ul>
+
+      <div class="input-group">
+        <span class="input-group-addon">Message</span>
+        <input type="text" ng-keypress="sendMessage($event)" class="form-control" placeholder="Type message here..." ng-model="msg">
+        <div class="inputbtn"></div>
+      </div>
+    </div>
+    
+    
+  </body>
+</html>

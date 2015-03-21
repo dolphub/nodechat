@@ -1,0 +1,28 @@
+{
+  "name": "nodechat",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dolphub/nodechat",
+  "authors": [
+    "Randy Mikkelsaar <randy.mikkelsaar@gmail.com>"
+  ],
+  "description": "Chat application with socket.io, angularjs and nodejs.  Used for Exploratory testing.",
+  "main": "app.js",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.15",
+    "bootstrap": "~3.3.4",
+    "socket.io": "~1.3.5",
+    "angular-ui-bootstrap": "~0.12.1",
+    "angular-prompt": "~1.1.0"
+  },
+  "resolutions": {
+    "angular": "~1.2.16"
+  }
+}

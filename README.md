@@ -1,5 +1,5 @@
 # NodeChat
-This is a testing application to play with message passing and functionality of socket.io and node.js
+This is a simple chat application built with NodeJS, Socket.io and AngularJS.
 
 To install the application:
 npm install && bower install
